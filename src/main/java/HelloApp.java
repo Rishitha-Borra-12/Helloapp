@@ -1,21 +1,27 @@
-import java.awt.*;
 public class HelloApp {
     public static void main(String[] args) {
-        StringBuilder namesBuilder = new StringBuilder();
-
+        // 1. Check if no arguments are provided
         if (args.length == 0) {
-            namesBuilder.append("World");
+            System.out.println("Hello, World!");
         } else {
-            // UC5: Using the Enhanced For Loop (for-each)
+            // 2. Use StringBuilder for efficient string construction
+            StringBuilder nameBuilder = new StringBuilder();
+
+            // 3. Enhanced for loop to append names and delimiters
             for (String name : args) {
-
-                if (namesBuilder.length() > 0) {
-                    namesBuilder.append(", ");
-                }
-                namesBuilder.append(name);
+                nameBuilder.append(name).append(", ");
             }
-        }
 
-        System.out.println("Hello, " + namesBuilder.toString() + "!");
+            // 4. Remove the trailing delimiter (", ") using substring
+            // Check length > 0 to avoid StringIndexOutOfBoundsException
+            String finalNames = "";
+            if (nameBuilder.length() > 0) {
+
+                finalNames = nameBuilder.substring(0, nameBuilder.length() - 2);
+            }
+
+            // 5. Display the final greeting
+            System.out.println("Hello, " + finalNames + "!");
+        }
     }
 }
